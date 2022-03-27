@@ -58,7 +58,7 @@ public class RegisterClient extends JDialog implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == buttonSave){
             if(VerifyValues()){
-                Contatos contato = new Contatos(ctn.size() + 1, this.labelName.getText(), this.labelMail.getText(),
+                Contatos contato = new Contatos(ctn.size() + 1, this.textFieldName.getText(), this.textFieldMail.getText(),
                         Integer.parseInt(this.textFieldAge.getText()));
                 try {
                     ctn.add(contato);

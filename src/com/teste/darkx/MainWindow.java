@@ -11,11 +11,9 @@ import java.util.List;
 
 public class MainWindow extends JFrame implements MenuListener, ActionListener {
     private JLabel textInicial, resumeText;
-    private JPanel panel = new JPanel();
-    private JMenuBar menuBar = new JMenuBar();
-    private JMenu menuClientes, menuSobre;
+    private final JMenuBar menuBar = new JMenuBar();
     private JMenuItem menuItemCadastrar, menuItemExibir, menuItemSobre, menuItemSair;
-    private List<Contatos> contatos = new ArrayList<Contatos>();
+    private List<Contatos> contatos = new ArrayList<>();
 
     public MainWindow(String title){
         super(title);
@@ -31,10 +29,11 @@ public class MainWindow extends JFrame implements MenuListener, ActionListener {
         this.resumeText.setFont(new Font(this.resumeText.getFont().getName(), Font.ITALIC, 15));
 
 
-        this.panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
 
-        this.panel.add(textInicial);
-        this.panel.add(this.resumeText);
+        panel.add(textInicial);
+        panel.add(this.resumeText);
 
         this.setJMenuBar(menuBar);
         this.getContentPane().add(panel);
@@ -47,8 +46,8 @@ public class MainWindow extends JFrame implements MenuListener, ActionListener {
                 "Então pode conter bugs e erros e até erros de português.<br/><br/>" +
                 "Obrigado pela atenção!!</html>");
 
-        this.menuClientes = new JMenu("Clientes");
-        this.menuSobre = new JMenu("Sobre");
+        JMenu menuClientes = new JMenu("Clientes");
+        JMenu menuSobre = new JMenu("Sobre");
 
         this.menuItemCadastrar = new JMenuItem("Cadastrar");
         this.menuItemExibir = new JMenuItem("Exibir");
@@ -105,6 +104,11 @@ public class MainWindow extends JFrame implements MenuListener, ActionListener {
             contatos = a.Run();
         } if (e.getSource() == this.menuItemExibir){
             ViewValues();
+        } if (e.getSource() == this.menuItemSobre) {
+            JOptionPane.showMessageDialog(this,
+                    "Esse menu foi feito no intuito de aprendizagem\n" +
+                            "Pode Conter erros e algumas coisas que no futuro poderei resolver.\n\n" +
+                            "Obrigado por instalar!!!");
         }
     }
 
